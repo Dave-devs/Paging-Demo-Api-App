@@ -1,4 +1,4 @@
-package com.example.pagingdemoapiapp.unsplash_paging_features.domain.di
+package com.example.pagingdemoapiapp.unsplash_paging_features.di
 
 import android.content.Context
 import androidx.room.Room
@@ -28,8 +28,8 @@ object AppModule {
     @Provides
     fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-            .readTimeout(10, TimeUnit.SECONDS)
-            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
             .build()
     }
 

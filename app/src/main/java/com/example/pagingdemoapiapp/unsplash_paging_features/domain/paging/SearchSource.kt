@@ -4,8 +4,9 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.api.UnsplashApi
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
+import javax.inject.Inject
 
-class SearchSource(
+class SearchSource @Inject constructor(
     private val unsplashApi: UnsplashApi,
     private val query: String
 ): PagingSource<Int, UnsplashImage>() {
@@ -13,7 +14,7 @@ class SearchSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UnsplashImage> {
         val currentPage = params.key ?: 1
         return try {
-            val response = unsplashApi.searchAllImages(query = query, perPage = 10)
+            val response = unsplashApi.searchAllImages(query = query, per_page = 10)
             val endOfPaginationReached = response.images.isEmpty()
             if(response.images.isEmpty()) {
                 LoadResult.Page(

@@ -13,7 +13,7 @@ interface UnsplashApi {
     @GET("/photos")
     suspend fun getAllImages(
         @Query("page") page: Int,
-        @Query("per_page") perPage: Int
+        @Query("per_page") per_page: Int
     ): List<UnsplashImage>
 
 
@@ -21,6 +21,6 @@ interface UnsplashApi {
     @GET("/search/photos")
     suspend fun searchAllImages(
         @Query("query") query: String,
-        @Query("per_page") perPage: Int
+        @Query("per_page") per_page: Int
     ): SearchImageResult
 }

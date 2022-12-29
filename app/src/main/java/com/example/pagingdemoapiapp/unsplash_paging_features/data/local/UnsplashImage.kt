@@ -11,5 +11,5 @@ data class UnsplashImage(
     val likes: Int,
     @Embedded val urls: Urls,
     @Embedded val user: User,
-    @PrimaryKey(autoGenerate = false) val id: String,
+    @PrimaryKey val id: String,
 )

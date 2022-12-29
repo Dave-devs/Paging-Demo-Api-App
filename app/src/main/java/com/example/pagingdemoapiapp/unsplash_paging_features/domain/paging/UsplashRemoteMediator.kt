@@ -9,9 +9,10 @@ import com.example.pagingdemoapiapp.unsplash_paging_features.data.UnsplashDataba
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.api.UnsplashApi
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashRemoteKeys
+import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class UnsplashRemoteMediator(
+class UnsplashRemoteMediator @Inject constructor(
     private val unsplashApi: UnsplashApi,
     private val unsplashDatabase: UnsplashDatabase
 ): RemoteMediator<Int, UnsplashImage>() {
@@ -45,7 +46,7 @@ class UnsplashRemoteMediator(
                 }
             }
 
-            val response = unsplashApi.getAllImages(page = currentPage, perPage = 10)
+            val response = unsplashApi.getAllImages(page = currentPage, per_page = 10)
             val endOfPaginationReached = response.isEmpty()
             val prevPage = if (currentPage == 1) {
                 null
