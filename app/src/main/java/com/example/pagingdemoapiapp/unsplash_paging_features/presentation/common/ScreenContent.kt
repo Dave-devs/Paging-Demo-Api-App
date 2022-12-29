@@ -1,7 +1,8 @@
-package com.example.pagingdemoapiapp.unsplash_paging_features.presentation.Common
+package com.example.pagingdemoapiapp.unsplash_paging_features.presentation.common
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -29,6 +30,7 @@ import androidx.paging.compose.items
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.pagingdemoapiapp.R
+import com.example.pagingdemoapiapp.ui.theme.HeartRed
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.Urls
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.User
@@ -36,25 +38,22 @@ import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UserLink
 
 @ExperimentalCoilApi
 @Composable
-fun ScreenContent(
-    items: LazyPagingItems<UnsplashImage>,
-    modifier: Modifier = Modifier
-) {
-     LazyColumn(
-         modifier = modifier
-             .fillMaxSize(),
-         contentPadding = PaddingValues(all = 12.dp),
-         verticalArrangement = Arrangement.spacedBy(12.dp)
-     ) {
-         items (
-             items = items,
-             key = { unsplashImage ->
-                 unsplashImage.id
-             }
-         ) { unsplashImage ->
-             unsplashImage?.let { UnsplashItem(unsplashImage = it) }
-         }
-     }
+fun ScreenContent(items: LazyPagingItems<UnsplashImage>) {
+    Log.d("Error", items.loadState.toString())
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(all = 12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        items(
+            items = items,
+            key = { unsplashImage ->
+                unsplashImage.id
+            }
+        ) { unsplashImage ->
+            unsplashImage?.let { UnsplashItem(unsplashImage = it) }
+        }
+    }
 }
 
 @ExperimentalCoilApi
@@ -71,37 +70,38 @@ fun UnsplashItem(unsplashImage: UnsplashImage) {
             .clickable {
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://unsplash.com/@${unsplashImage.user.userName}?utm_source=PagingDemoApp&utm_medium=referral")
+                    Uri.parse("https://unsplash.com/@${unsplashImage.user.userName}?utm_source=DemoApp&utm_medium=referral")
                 )
                 startActivity(context, browserIntent, null)
             }
-            .fillMaxSize()
-            .height(300.dp),
+            .height(300.dp)
+            .fillMaxWidth(),
         contentAlignment = Alignment.BottomCenter
     ) {
         Image(
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier = Modifier.fillMaxSize(),
             painter = painter,
             contentDescription = "Unsplash Image",
             contentScale = ContentScale.Crop
         )
         Surface(
             modifier = Modifier
-                .fillMaxWidth()
                 .height(40.dp)
+                .fillMaxWidth()
                 .alpha(ContentAlpha.medium),
             color = Color.Black
         ) {}
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .height(40.dp)
-            .padding(horizontal = 60.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
+        Row(
+            modifier = Modifier
+                .height(40.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = buildAnnotatedString {
-                    append("Image by ")
+                    append("Photo by ")
                     withStyle(style = SpanStyle(fontWeight = FontWeight.Black)) {
                         append(unsplashImage.user.userName)
                     }
@@ -113,10 +113,9 @@ fun UnsplashItem(unsplashImage: UnsplashImage) {
                 overflow = TextOverflow.Ellipsis
             )
             LikeCounter(
-                modifier = Modifier
-                    .weight(3f),
-                painter = painterResource(id = R.drawable.ic_placeholder_image),
-                like = "${unsplashImage.likes}"
+                modifier = Modifier.weight(3f),
+                painter = painterResource(id = R.drawable.ic_baseline_favorite_24),
+                likes = "${unsplashImage.likes}"
             )
         }
     }
@@ -124,9 +123,9 @@ fun UnsplashItem(unsplashImage: UnsplashImage) {
 
 @Composable
 fun LikeCounter(
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
     painter: Painter,
-    like: String
+    likes: String
 ) {
     Row(
         modifier = modifier.fillMaxSize(),
@@ -136,11 +135,11 @@ fun LikeCounter(
         Icon(
             painter = painter,
             contentDescription = "Heart Icon",
-            tint = Color.Red
+            tint = HeartRed
         )
         Divider(modifier = Modifier.width(6.dp))
         Text(
-            text = like,
+            text = likes,
             color = Color.White,
             fontSize = MaterialTheme.typography.subtitle1.fontSize,
             fontWeight = FontWeight.Bold,
@@ -153,13 +152,13 @@ fun LikeCounter(
 @ExperimentalCoilApi
 @Composable
 @Preview
-fun ScreenContentPreview() {
+fun UnsplashImagePreview() {
     UnsplashItem(
         unsplashImage = UnsplashImage(
             id = "1",
             urls = Urls(regular = ""),
             likes = 100,
-            user = User(userName = "Dave-devs", userLinks = UserLinks(html = ""))
+            user = User(userName = "Oreoluwa", userLinks = UserLinks(html = ""))
         )
     )
 }
