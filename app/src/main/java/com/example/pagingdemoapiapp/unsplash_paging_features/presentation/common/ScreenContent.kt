@@ -140,7 +140,7 @@ fun LikeCounter(
         Divider(modifier = Modifier.width(6.dp))
         Text(
             text = likes,
-            color = Color.White,
+            color = MaterialTheme.colors.onPrimary,
             fontSize = MaterialTheme.typography.subtitle1.fontSize,
             fontWeight = FontWeight.Bold,
             maxLines = 1,

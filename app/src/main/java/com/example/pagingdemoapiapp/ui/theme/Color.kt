@@ -5,7 +5,7 @@ import androidx.compose.ui.graphics.Color
 val HeartRed = Color(0xFFFF4444)
 val White = Color(0xFFffffff)
 
-val Blue20 = Color(0xFF000066)
+
 val Blue40 = Color(0xFF0000cc)
 val Blue80 = Color(0xFF9999ff)
 val Blue90 = Color(0xFFccccff)
