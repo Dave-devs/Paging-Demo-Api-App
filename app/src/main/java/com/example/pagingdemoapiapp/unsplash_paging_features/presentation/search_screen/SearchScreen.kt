@@ -30,7 +30,7 @@ fun SearchScreen(
                     searchViewModel.updateSearchQuery(query = it)
                 },
                 onSearchClicked = {
-                    searchViewModel.onSearch(query = it)
+                    searchViewModel.searchHeroes(query = it)
                 },
                 onCloseClicked = {
                     navController.popBackStack()

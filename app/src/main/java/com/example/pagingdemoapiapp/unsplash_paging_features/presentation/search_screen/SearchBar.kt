@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -52,7 +53,7 @@ fun SearchWidget(
                 )
             },
             textStyle = TextStyle(
-                color = Color.Blue
+                color = Color.White
             ),
             singleLine = true,
             leadingIcon = {
@@ -64,7 +65,7 @@ fun SearchWidget(
                     Icon(
                         imageVector = Icons.Default.Search,
                         contentDescription = "Search Icon",
-                        tint = Color.Blue
+                        tint = Color.White
                     )
                 }
             },
@@ -85,12 +86,12 @@ fun SearchWidget(
                     Icon(
                         imageVector = Icons.Default.Close,
                         contentDescription = "Close Icon",
-                        tint = Color.Blue
+                        tint = Color.White
                     )
                 }
             },
             keyboardOptions = KeyboardOptions(
-                imeAction = androidx.compose.ui.text.input.ImeAction.Search
+                imeAction = ImeAction.Search
             ),
             keyboardActions = KeyboardActions(
                 onSearch = {
