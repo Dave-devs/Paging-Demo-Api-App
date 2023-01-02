@@ -56,11 +56,12 @@ fun SearchWidget(
                 color = Color.White
             ),
             singleLine = true,
+            maxLines = 1,
             leadingIcon = {
                 IconButton(
                     modifier = Modifier
                         .alpha(alpha = ContentAlpha.medium),
-                    onClick = {}
+                    onClick = {  }
                 ) {
                     Icon(
                         imageVector = Icons.Default.Search,
