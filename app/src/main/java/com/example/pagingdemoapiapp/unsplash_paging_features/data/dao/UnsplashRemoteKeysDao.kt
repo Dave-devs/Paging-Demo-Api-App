@@ -1,7 +1,7 @@
 package com.example.pagingdemoapiapp.unsplash_paging_features.data.dao
 
 import androidx.room.*
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashRemoteKeys
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashRemoteKeys
 
 @Dao
 interface UnsplashRemoteKeysDao {

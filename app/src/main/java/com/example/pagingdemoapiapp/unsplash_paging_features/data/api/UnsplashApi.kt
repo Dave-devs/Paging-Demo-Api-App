@@ -1,8 +1,8 @@
 package com.example.pagingdemoapiapp.unsplash_paging_features.data.api
 
 import com.example.pagingdemoapiapp.BuildConfig
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.SearchImageResult
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.SearchImageResult
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashImage
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query

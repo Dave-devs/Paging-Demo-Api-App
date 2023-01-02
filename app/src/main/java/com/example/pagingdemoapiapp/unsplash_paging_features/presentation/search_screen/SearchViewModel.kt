@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.pagingdemoapiapp.unsplash_paging_features.domain.repository.UnsplashRepository
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashImage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow

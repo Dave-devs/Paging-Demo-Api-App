@@ -3,7 +3,7 @@ package com.example.pagingdemoapiapp.unsplash_paging_features.domain.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.api.UnsplashApi
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashImage
 import javax.inject.Inject
 
 class SearchSource @Inject constructor(
@@ -16,7 +16,7 @@ class SearchSource @Inject constructor(
         return try {
             val response = unsplashApi.searchAllImages(query = query, per_page = 10)
             val endOfPaginationReached = response.images.isEmpty()
-            if(response.images.isEmpty()) {
+            if(response.images.isNotEmpty()) {
                 LoadResult.Page(
                     data = response.images,
                     prevKey = if (currentPage == 1) null else currentPage -1,

@@ -7,8 +7,8 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.UnsplashDatabase
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.api.UnsplashApi
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashRemoteKeys
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashImage
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashRemoteKeys
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
@@ -32,14 +32,14 @@ class UnsplashRemoteMediator @Inject constructor(
                 }
                 LoadType.PREPEND -> {
                     val remoteKeys = getRemoteKeyForFirstItem(state)
-                    val prevPage = remoteKeys?.prevPage ?: return MediatorResult.Success(
+                    val prevPage = remoteKeys?.prevPage?:return MediatorResult.Success(
                         endOfPaginationReached = remoteKeys != null
                     )
                     prevPage
                 }
                 LoadType.APPEND -> {
                     val remoteKeys = getRemoteKeyForLastItem(state)
-                    val nextPage = remoteKeys?.nextPage ?: return MediatorResult.Success(
+                    val nextPage = remoteKeys?.nextPage?:return MediatorResult.Success(
                         endOfPaginationReached = remoteKeys != null
                     )
                     nextPage

@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashImage
 
 @Dao
 interface UnsplashImageDao {

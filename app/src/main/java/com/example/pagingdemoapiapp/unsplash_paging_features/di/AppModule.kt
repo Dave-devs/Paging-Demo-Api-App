@@ -54,9 +54,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(
-        @ApplicationContext context: Context
-    ): UnsplashDatabase {
+    fun provideDatabase( @ApplicationContext context: Context): UnsplashDatabase {
         return Room.databaseBuilder(
             context,
             UnsplashDatabase::class.java,

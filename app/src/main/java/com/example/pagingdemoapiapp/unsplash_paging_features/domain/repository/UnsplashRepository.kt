@@ -6,12 +6,13 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.UnsplashDatabase
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.api.UnsplashApi
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashImage
 import com.example.pagingdemoapiapp.unsplash_paging_features.domain.paging.SearchSource
 import com.example.pagingdemoapiapp.unsplash_paging_features.domain.paging.UnsplashRemoteMediator
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class UnsplashRepository(
+class UnsplashRepository @Inject constructor(
     private val unsplashApi: UnsplashApi,
     private val unsplashDatabase: UnsplashDatabase
 ) {

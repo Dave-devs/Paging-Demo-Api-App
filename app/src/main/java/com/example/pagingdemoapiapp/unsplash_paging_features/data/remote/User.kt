@@ -1,4 +1,4 @@
-package com.example.pagingdemoapiapp.unsplash_paging_features.data.local
+package com.example.pagingdemoapiapp.unsplash_paging_features.data.remote
 
 import androidx.room.Embedded
 import kotlinx.serialization.SerialName

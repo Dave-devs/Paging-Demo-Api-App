@@ -31,10 +31,10 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.pagingdemoapiapp.R
 import com.example.pagingdemoapiapp.ui.theme.HeartRed
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UnsplashImage
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.Urls
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.User
-import com.example.pagingdemoapiapp.unsplash_paging_features.data.local.UserLinks
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashImage
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.Urls
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.User
+import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UserLinks
 
 @ExperimentalCoilApi
 @Composable
