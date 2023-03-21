@@ -9,7 +9,6 @@ import coil.annotation.ExperimentalCoilApi
 import com.example.pagingdemoapiapp.ui.theme.PagingDemoApiAppTheme
 import com.example.pagingdemoapiapp.unsplash_paging_features.util.NavGraph
 import dagger.hilt.android.AndroidEntryPoint
-
 @ExperimentalPagingApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
