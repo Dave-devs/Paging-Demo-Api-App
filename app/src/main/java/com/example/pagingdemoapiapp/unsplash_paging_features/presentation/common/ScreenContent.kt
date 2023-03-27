@@ -3,7 +3,6 @@ package com.example.pagingdemoapiapp.unsplash_paging_features.presentation.commo
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,7 +27,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.rememberImagePainter
+import coil.compose.AsyncImage
 import com.example.pagingdemoapiapp.R
 import com.example.pagingdemoapiapp.ui.theme.HeartRed
 import com.example.pagingdemoapiapp.unsplash_paging_features.data.remote.UnsplashImage
@@ -56,14 +55,15 @@ fun ScreenContent(items: LazyPagingItems<UnsplashImage>) {
     }
 }
 
-@ExperimentalCoilApi
-@Composable
-fun UnsplashItem(unsplashImage: UnsplashImage) {
-    val painter = rememberImagePainter(data = unsplashImage.urls.regular) {
+/*  val painter = rememberImagePainter(data = unsplashImage.urls.regular) {
         crossfade(durationMillis = 1000)
         error(R.drawable.ic_placeholder_image)
         placeholder(R.drawable.ic_placeholder_image)
-    }
+    }*/
+
+@ExperimentalCoilApi
+@Composable
+fun UnsplashItem(unsplashImage: UnsplashImage) {
     val context = LocalContext.current
     Box(
         modifier = Modifier
@@ -78,11 +78,11 @@ fun UnsplashItem(unsplashImage: UnsplashImage) {
             .fillMaxWidth(),
         contentAlignment = Alignment.BottomCenter
     ) {
-        Image(
-            modifier = Modifier.fillMaxSize(),
-            painter = painter,
+        AsyncImage(
+            model = unsplashImage.urls.regular,
             contentDescription = "Unsplash Image",
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
+            alignment = Alignment.Center
         )
         Surface(
             modifier = Modifier
